@@ -38,7 +38,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "pregunta"
-length = 8.4
+length = 11.0
 loop = true
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")

@@ -95,7 +95,11 @@ func _prepararRespuestas(uno,dos,tres):
 	labelDOS.text = dos
 	labelTRES.text = tres
 	
-func _preguntaNueva(pregunta, keko, respuestaCorrecta, musica):
+func _preguntaNueva(pregunta, keko, respuestaCorrecta, track):	
+	
+	musica.stream = track
+	musica.play()
+	
 	labelPregunta.text = pregunta
 	respuestaActual = respuestaCorrecta
 	pataco.play(keko)
