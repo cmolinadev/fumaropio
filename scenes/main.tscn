@@ -187,10 +187,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 11 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 8, 11 ),
+"transitions": PoolRealArray( 1, 2, 2 ),
 "update": 0,
-"values": [ Vector2( -1024, 580 ), Vector2( 0, 580 ) ]
+"values": [ Vector2( -1024, 580 ), Vector2( 0, 580 ), Vector2( 0, 580 ) ]
 }
 
 [sub_resource type="SpriteFrames" id=2]
@@ -628,7 +628,7 @@ volume_db = -29.714
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="frame" type="Sprite" parent="."]
 modulate = Color( 0, 0.788235, 1, 1 )
 texture = ExtResource( 37 )
 centered = false
@@ -637,5 +637,8 @@ centered = false
 position = Vector2( 0, 580 )
 texture = ExtResource( 38 )
 centered = false
+
+[node name="SonidoRespuesta6" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

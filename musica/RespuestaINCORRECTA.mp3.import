@@ -11,5 +11,5 @@ dest_files=[ "res://.import/RespuestaINCORRECTA.mp3-d0b247ac1237c482e47171272582
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
