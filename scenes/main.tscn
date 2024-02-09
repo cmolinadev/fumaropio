@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://fonts/respuesta.tres" type="DynamicFont" id=1]
 [ext_resource path="res://fonts/preguntas.tres" type="DynamicFont" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://kekos/charmander_triste.png" type="Texture" id=32]
 [ext_resource path="res://kekos/charmander_feliz.png" type="Texture" id=33]
 [ext_resource path="res://icon.png" type="Texture" id=34]
+[ext_resource path="res://musica/pregunta1.mp3" type="AudioStream" id=35]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pregunta"
@@ -451,5 +452,8 @@ material = SubResource( 4 )
 position = Vector2( 509.5, 304.5 )
 scale = Vector2( 18.6094, 11.7031 )
 texture = ExtResource( 34 )
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 35 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
