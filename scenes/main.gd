@@ -28,9 +28,16 @@ onready var pregunta8 = preload("res://musica/pregunta8.mp3")
 onready var pregunta9 = preload("res://musica/pregunta9.mp3")
 onready var pregunta11 = preload("res://musica/pregunta11.mp3")
 
+onready var sonidoAcierto = preload("res://musica/RespuestaCORRECTA.mp3")
+onready var sonidoError = preload("res://musica/RespuestaINCORRECTA.mp3")
+onready var respuestaPlayer = $SonidoRespuesta6
+
+
 var selectedLabel
 var labels = []
 var prevSelectedLabel
+
+onready var frame = $frame
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
@@ -94,34 +101,34 @@ func _empezar():
 	
 	match contador:
 		1:
-			_preguntaNueva("¿Es el opio bueno?", "bluey", 2, pregunta1)
+			_preguntaNueva("¿Es el opio bueno?", "bluey", 2, pregunta1, Color.cyan)
 			_prepararRespuestas("si", "no", "depende de la ocasión")
 		2:
-			_preguntaNueva("¿Cuál ha sido la mejor época del opio?", "doraemon", 3, pregunta2)
+			_preguntaNueva("¿Cuál ha sido la mejor época del opio?", "doraemon", 3, pregunta2, Color.yellow)
 			_prepararRespuestas("Está por llegar", "Ahora", "¡Nunca!")
 		3:
-			_preguntaNueva("Cuando tu madre fume opio ¿Qué harás?", "sonic", 1, pregunta3)
+			_preguntaNueva("Cuando tu madre fume opio ¿Qué harás?", "sonic", 1, pregunta3, Color.dodgerblue)
 			_prepararRespuestas("Denunciarla a la policía", "Pedirle", "Contarlo en el recreo")
 		4:
-			_preguntaNueva("¿Cómo se escribe '___' ?", "charmander", 3, pregunta4)
+			_preguntaNueva("¿Cómo se escribe '___' ?", "charmander", 3, pregunta4, Color.orangered)
 			_prepararRespuestas("Opio", "Opio", "Apio")
 		5:
-			_preguntaNueva("¿De qué color era la ropa del líder del ejercito francés en la segunda guerra del opio en 1856", "estebanco", 2, pregunta5)
+			_preguntaNueva("¿De qué color era la ropa del líder del ejercito francés en la segunda guerra del opio en 1856", "estebanco", 2, pregunta5, Color.lightblue)
 			_prepararRespuestas("#008f39", "Azul, roja y blanca", "Verde opio")
 		6:
-			_preguntaNueva("¿A cuánto está el gramo de opio?", "pocoyo", 1,  pregunta6)
+			_preguntaNueva("¿A cuánto está el gramo de opio?", "pocoyo", 1,  pregunta6, Color.fuchsia)
 			_prepararRespuestas("¡No quiero saberlo!", "34$", "Lo que sea necesario")
 		7:
-			_preguntaNueva("¿Cómo prefieres el opio?", "peppa", 1, pregunta7)
+			_preguntaNueva("¿Cómo prefieres el opio?", "peppa", 1, pregunta7, Color.bisque)
 			_prepararRespuestas("Viéndolo (lejos)", "Viéndolo (cerca)", "Fumándolo")
 		8:
-			_preguntaNueva("¿Dónde guardaría tu tía Marietta el opio?", "bort", 3, pregunta8)
+			_preguntaNueva("¿Dónde guardaría tu tía Marietta el opio?", "bort", 3, pregunta8, Color.green)
 			_prepararRespuestas("En el sujetador", "En la guantera", "Ya no es mi tía.")
 		9:
-			_preguntaNueva("El 7 de Enero de 1945 ¿Quién dijo en el Condado de Boone, en Arkansas, en la calle Churchill, a las 22:31, vestido con un sombrero vaquero y una corbata roja, la siguiente frase: 'Me gusta el opio'?", "eufrasio", 2, pregunta9)
+			_preguntaNueva("El 7 de Enero de 1945 ¿Quién dijo en el Condado de Boone, en Arkansas, en la calle Churchill, a las 22:31, vestido con un sombrero vaquero y una corbata roja, la siguiente frase: 'Me gusta el opio'?", "eufrasio", 2, pregunta9, Color.magenta)
 			_prepararRespuestas("Una persona", "Un criminal", "Optimus Prime")
 		10:
-			_preguntaNueva("Pregunta trampa: ¿Es el opio bueno?", "miki", 2, pregunta11)
+			_preguntaNueva("Pregunta trampa: ¿Es el opio bueno?", "miki", 2, pregunta11, Color.khaki)
 			_prepararRespuestas("si", "no", "depende de la ocasión")
 			
 	_responder(2, true)
@@ -131,8 +138,9 @@ func _prepararRespuestas(uno,dos,tres):
 	labelDOS.text = dos
 	labelTRES.text = tres
 	
-func _preguntaNueva(pregunta, keko, respuestaCorrecta, track):	
+func _preguntaNueva(pregunta, keko, respuestaCorrecta, track, color):	
 	
+	frame.modulate = color
 	musica.stream = track
 	musica.play()
 	
@@ -147,8 +155,12 @@ func _comprobarRespuesta():
 	print(respuestaActual)
 	if seleccion == respuestaActual:
 		pataco.frame = 2
+		respuestaPlayer.stream = sonidoAcierto
+		respuestaPlayer.play()
 	else:
 		pataco.frame = 1
+		respuestaPlayer.stream = sonidoError
+		respuestaPlayer.play()
 	
 		
 		
