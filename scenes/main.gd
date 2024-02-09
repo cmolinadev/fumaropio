@@ -33,6 +33,8 @@ var labels = []
 var prevSelectedLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
+	$AnimationIdle.play("idle")
 	$AnimationEstrofa.play("pregunta")
 	labels.append(labelTRES)
 	labels.push_back(labelDOS)
@@ -108,7 +110,7 @@ func _empezar():
 			_prepararRespuestas("#008f39", "Azul, roja y blanca", "Verde opio")
 		6:
 			_preguntaNueva("¿A cuánto está el gramo de opio?", "pocoyo", 1,  pregunta6)
-			_prepararRespuestas("¡No quiero saberlo!", "34$", "El que sea necesario")
+			_prepararRespuestas("¡No quiero saberlo!", "34$", "Lo que sea necesario")
 		7:
 			_preguntaNueva("¿Cómo prefieres el opio?", "peppa", 1, pregunta7)
 			_prepararRespuestas("Viéndolo (lejos)", "Viéndolo (cerca)", "Fumándolo")

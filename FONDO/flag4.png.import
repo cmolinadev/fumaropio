@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/esteban_feliz.png-0d332b9051b1fc14e33a827895d98773.stex"
+path="res://.import/flag4.png-71e849251942720d08696f6dd169b833.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kekos/esteban_feliz.png"
-dest_files=[ "res://.import/esteban_feliz.png-0d332b9051b1fc14e33a827895d98773.stex" ]
+source_file="res://FONDO/flag4.png"
+dest_files=[ "res://.import/flag4.png-71e849251942720d08696f6dd169b833.stex" ]
 
 [params]
 
