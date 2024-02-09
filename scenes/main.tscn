@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://fonts/respuesta.tres" type="DynamicFont" id=1]
 [ext_resource path="res://fonts/preguntas.tres" type="DynamicFont" id=2]
@@ -9,6 +9,30 @@
 [ext_resource path="res://kekos/doramio.png" type="Texture" id=7]
 [ext_resource path="res://kekos/doramio3.png" type="Texture" id=8]
 [ext_resource path="res://kekos/bluey3.png" type="Texture" id=9]
+[ext_resource path="res://kekos/eufrasio_feliz.png" type="Texture" id=10]
+[ext_resource path="res://kekos/miki_triste.png" type="Texture" id=11]
+[ext_resource path="res://kekos/esteban_triste.png" type="Texture" id=12]
+[ext_resource path="res://kekos/peppa_triste.png" type="Texture" id=13]
+[ext_resource path="res://kekos/pocoyo_normal.png" type="Texture" id=14]
+[ext_resource path="res://kekos/eufrasio_normal.png" type="Texture" id=15]
+[ext_resource path="res://kekos/pocoyo_trist.png" type="Texture" id=16]
+[ext_resource path="res://kekos/esteban_normal.png" type="Texture" id=17]
+[ext_resource path="res://kekos/peppa_normal.png" type="Texture" id=18]
+[ext_resource path="res://kekos/peppa_feliz.png" type="Texture" id=19]
+[ext_resource path="res://kekos/sonic_normal.png" type="Texture" id=20]
+[ext_resource path="res://kekos/eufrasio_triste.png" type="Texture" id=21]
+[ext_resource path="res://kekos/pocoyo_feliz.png" type="Texture" id=22]
+[ext_resource path="res://kekos/miki_neutral.png" type="Texture" id=23]
+[ext_resource path="res://kekos/miki_feliz.png" type="Texture" id=24]
+[ext_resource path="res://kekos/esteban_feliz.png" type="Texture" id=25]
+[ext_resource path="res://kekos/sonic_triste.png" type="Texture" id=26]
+[ext_resource path="res://kekos/sonic_feliz.png" type="Texture" id=27]
+[ext_resource path="res://kekos/charmander_normal.png" type="Texture" id=28]
+[ext_resource path="res://kekos/bort_normal.png" type="Texture" id=29]
+[ext_resource path="res://kekos/bort_triste.png" type="Texture" id=30]
+[ext_resource path="res://kekos/bort_feliz.png" type="Texture" id=31]
+[ext_resource path="res://kekos/charmander_triste.png" type="Texture" id=32]
+[ext_resource path="res://kekos/charmander_feliz.png" type="Texture" id=33]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pregunta"
@@ -39,9 +63,49 @@ animations = [ {
 "name": "bluey",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "bort",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "charmander",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "doraemon",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 12 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "estebanco",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 21 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "eufrasio",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 11 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "miki",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 13 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "peppa",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 16 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "pocoyo",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "sonic",
 "speed": 5.0
 } ]
 
@@ -121,8 +185,8 @@ one_shot = true
 [node name="Kekos" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Kekos"]
-position = Vector2( 532, 341 )
+position = Vector2( 526, 379 )
 frames = SubResource( 2 )
-animation = "doraemon"
+animation = "eufrasio"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
