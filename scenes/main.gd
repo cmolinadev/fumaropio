@@ -36,16 +36,27 @@ func _input(event):
 	if !puedes: return
 	
 	if Input.is_action_just_pressed("ui_left"):
-		print("ppe")
-		seleccion = 1
+		_responder(1)
 	if Input.is_action_just_pressed("ui_up"):
-		seleccion = 2
+		_responder(2)
 	if Input.is_action_just_pressed("ui_right"):
-		seleccion = 3
+		_responder(3)
 		
-func _responder():
+func _responder(opcion):
+	seleccion = opcion	
 	puedes = false;
 	timer.start()		
+	
+	var selectedLabel = null
+	
+	match (opcion):
+		1: selectedLabel = labelUNO
+		2: selectedLabel = labelDOS
+		3: selectedLabel = labelTRES
+		
+	print("test")
+	var tween = create_tween()
+	tween.tween_property(selectedLabel.get_parent(), "scale", Vector2(1.4, 1.4),0.3)
 	
 func _on_Timer_timeout():
 	puedes = true
