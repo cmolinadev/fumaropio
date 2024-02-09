@@ -36,7 +36,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "pregunta"
-length = 8.0
+length = 8.4
 loop = true
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -45,7 +45,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5.9 ),
+"times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -175,7 +175,7 @@ autowrap = true
 
 [node name="Animation Idle" type="AnimationPlayer" parent="."]
 
-[node name="Animation Estrofa" type="AnimationPlayer" parent="."]
+[node name="AnimationEstrofa" type="AnimationPlayer" parent="."]
 anims/pregunta = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -183,9 +183,10 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Kekos" type="Node2D" parent="."]
+position = Vector2( 515, 425 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Kekos"]
-position = Vector2( 526, 379 )
+position = Vector2( 1, 0 )
 frames = SubResource( 2 )
 animation = "eufrasio"
 
