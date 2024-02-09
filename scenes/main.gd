@@ -50,7 +50,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_right"):
 		_responder(3)
 		
-func _responder(opcion):
+func _responder(opcion, insta = false):
 	
 	seleccion = opcion
 	puedes = false;
@@ -62,7 +62,8 @@ func _responder(opcion):
 		3: selectedLabel = labelTRES
 	
 	var tween = create_tween()
-	tween.tween_property(selectedLabel.get_parent(), "scale", Vector2(1.4, 1.4),0.7).set_trans(Tween.TRANS_ELASTIC)
+	var time = 0 if insta else 0.7
+	tween.tween_property(selectedLabel.get_parent(), "scale", Vector2(1.4, 1.4),time).set_trans(Tween.TRANS_ELASTIC)
 	_stop_other_tweens()
 	
 func _stop_other_tweens():
@@ -119,8 +120,9 @@ func _empezar():
 			_prepararRespuestas("Una persona", "Un criminal", "Optimus Prime")
 		10:
 			_preguntaNueva("Pregunta trampa: ¿Es el opio bueno?", "miki", 2, pregunta11)
-			_prepararRespuestas("si", "no", "depende de la ocasión")			
-	
+			_prepararRespuestas("si", "no", "depende de la ocasión")
+			
+	_responder(2, true)
 	
 func _prepararRespuestas(uno,dos,tres):
 	labelUNO.text = uno
