@@ -27,13 +27,18 @@ onready var pregunta8 = preload("res://musica/pregunta8.mp3")
 onready var pregunta9 = preload("res://musica/pregunta9.mp3")
 onready var pregunta11 = preload("res://musica/pregunta11.mp3")
 
+var tweens
+
+var selectedLabel
+var prevSelectedLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationEstrofa.play("pregunta")
 	pass # Replace with function body.
 	
 func _input(event):	
-	if !puedes: return
+	if !puedes: 
+		return
 	
 	if Input.is_action_just_pressed("ui_left"):
 		_responder(1)
@@ -43,25 +48,38 @@ func _input(event):
 		_responder(3)
 		
 func _responder(opcion):
-	seleccion = opcion	
-	puedes = false;
-	timer.start()		
 	
-	var selectedLabel = null
+	seleccion = opcion
+	puedes = false;
+	timer.start()
 	
 	match (opcion):
 		1: selectedLabel = labelUNO
 		2: selectedLabel = labelDOS
 		3: selectedLabel = labelTRES
-		
+	
+	
 	print("test")
 	var tween = create_tween()
-	tween.tween_property(selectedLabel.get_parent(), "scale", Vector2(1.4, 1.4),0.3)
+#	tweens.append_back(tween)
+	tween.tween_property(selectedLabel.get_parent(), "scale", Vector2(1.4, 1.4),0.7).set_trans(Tween.TRANS_ELASTIC)
+	if prevSelectedLabel != null && prevSelectedLabel != selectedLabel:
+		create_tween().tween_property(prevSelectedLabel.get_parent(), "scale", Vector2(1, 1), 0.7).set_trans(Tween.TRANS_ELASTIC)
+	prevSelectedLabel = selectedLabel
+	
+func _stop_other_tweens():
+	pass
 	
 func _on_Timer_timeout():
 	puedes = true
 	
+func _remove_other_twinks(tweenbueno):
+	for v in tweens:
+		if tweenbueno != v:
+			v.tween_property()
+	
 func _empezar():	
+	
 	puedes = true
 	var respuestaActual = null
 	
@@ -117,6 +135,7 @@ func _preguntaNueva(pregunta, keko, respuestaCorrecta, track):
 	pataco.stop()
 	
 func _comprobarRespuesta():
+	puedes = false
 	print (seleccion)
 	print(respuestaActual)
 	if seleccion == respuestaActual:
