@@ -13,6 +13,7 @@ onready var musica = $Audio
 
 var respuestaActual
 var seleccion = 1
+var preguntando
 var puedes
 var contador = 0
 
@@ -27,17 +28,19 @@ onready var pregunta8 = preload("res://musica/pregunta8.mp3")
 onready var pregunta9 = preload("res://musica/pregunta9.mp3")
 onready var pregunta11 = preload("res://musica/pregunta11.mp3")
 
-var tweens
-
 var selectedLabel
+var labels = []
 var prevSelectedLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationEstrofa.play("pregunta")
+	labels.append(labelTRES)
+	labels.push_back(labelDOS)
+	labels.push_back(labelUNO)
 	pass # Replace with function body.
 	
 func _input(event):	
-	if !puedes: 
+	if !puedes || !preguntando: 
 		return
 	
 	if Input.is_action_just_pressed("ui_left"):
@@ -58,28 +61,28 @@ func _responder(opcion):
 		2: selectedLabel = labelDOS
 		3: selectedLabel = labelTRES
 	
-	
-	print("test")
 	var tween = create_tween()
-#	tweens.append_back(tween)
 	tween.tween_property(selectedLabel.get_parent(), "scale", Vector2(1.4, 1.4),0.7).set_trans(Tween.TRANS_ELASTIC)
-	if prevSelectedLabel != null && prevSelectedLabel != selectedLabel:
-		create_tween().tween_property(prevSelectedLabel.get_parent(), "scale", Vector2(1, 1), 0.7).set_trans(Tween.TRANS_ELASTIC)
-	prevSelectedLabel = selectedLabel
+	_stop_other_tweens()
 	
 func _stop_other_tweens():
-	pass
+	if prevSelectedLabel != null && prevSelectedLabel != selectedLabel:
+		create_tween().tween_property(prevSelectedLabel.get_parent(), "scale", Vector2(1, 1), 0.7).set_trans(Tween.TRANS_ELASTIC)
+	
+	for v in labels:
+		if v != selectedLabel:
+			create_tween().tween_property(v, "modulate", Color(0.4, 0.4, 0.4, 1), 0.2)
+		else: 
+			create_tween().tween_property(v, "modulate", Color(1, 1, 1, 1), 0.2)
+	
+	prevSelectedLabel = selectedLabel
 	
 func _on_Timer_timeout():
 	puedes = true
 	
-func _remove_other_twinks(tweenbueno):
-	for v in tweens:
-		if tweenbueno != v:
-			v.tween_property()
+func _empezar():
 	
-func _empezar():	
-	
+	preguntando = true
 	puedes = true
 	var respuestaActual = null
 	
@@ -135,7 +138,7 @@ func _preguntaNueva(pregunta, keko, respuestaCorrecta, track):
 	pataco.stop()
 	
 func _comprobarRespuesta():
-	puedes = false
+	preguntando = false
 	print (seleccion)
 	print(respuestaActual)
 	if seleccion == respuestaActual:
