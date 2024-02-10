@@ -129,11 +129,10 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 512, 300 )
 scale = Vector2( 1.10191, 1.10191 )
 frames = SubResource( 28 )
-frame = 8
+frame = 2
 playing = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
 margin_left = -441.0
 margin_top = -330.0
 margin_right = 2359.0
