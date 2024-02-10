@@ -32,10 +32,17 @@ onready var sonidoAcierto = preload("res://musica/RespuestaCORRECTA.mp3")
 onready var sonidoError = preload("res://musica/RespuestaINCORRECTA.mp3")
 onready var respuestaPlayer = $SonidoRespuesta6
 
+onready var flag = $Flag1
+onready var flag2 = preload("res://FONDO/flag2.png")
+onready var flag3 = preload("res://FONDO/flag3.png")
+onready var flag4 = preload("res://FONDO/flag4.png")
+onready var flag5 = preload("res://FONDO/flag5.png")
 
 var selectedLabel
 var labels = []
 var prevSelectedLabel
+
+var errores = 0
 
 onready var frame = $frame
 # Called when the node enters the scene tree for the first time.
@@ -91,6 +98,17 @@ func _stop_other_tweens():
 func _on_Timer_timeout():
 	puedes = true
 	
+func _set_flag(num):
+	match(num):
+		1:
+			flag.texture = flag2
+		2:
+			flag.texture = flag3
+		3:
+			flag.texture = flag4
+		4:
+			flag.texture = flag5
+	
 func _empezar():
 	
 	preguntando = true
@@ -111,7 +129,7 @@ func _empezar():
 			_preguntaNueva("Cuando tu madre fume opio ¿Qué harás?", "sonic", 1, pregunta3, Color.dodgerblue)
 			_prepararRespuestas("Denunciarla a la policía", "Pedirle", "Contarlo en el recreo")
 		4:
-			_preguntaNueva("¿Cómo se escribe '___' ?", "charmander", 3, pregunta4, Color.orangered)
+			_preguntaNueva("¿Cómo se escribe '____' ?", "charmander", 3, pregunta4, Color.orangered)
 			_prepararRespuestas("Opio", "Opio", "Apio")
 		5:
 			_preguntaNueva("¿De qué color era la ropa del líder del ejercito francés en la segunda guerra del opio en 1856", "estebanco", 2, pregunta5, Color.lightblue)
@@ -154,6 +172,7 @@ func _comprobarRespuesta():
 	preguntando = false
 	print (seleccion)
 	print(respuestaActual)
+	
 	if seleccion == respuestaActual:
 		pataco.frame = 2
 		respuestaPlayer.stream = sonidoAcierto
@@ -162,7 +181,9 @@ func _comprobarRespuesta():
 		pataco.frame = 1
 		respuestaPlayer.stream = sonidoError
 		respuestaPlayer.play()
-	
+		errores+=1
+
+	_set_flag(errores)
 		
 		
 		
