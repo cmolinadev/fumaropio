@@ -10,6 +10,9 @@ onready var labelDOS = $fondo/B/Label
 onready var labelTRES = $fondo/C/Label
 
 onready var musica = $Audio
+onready var selectAudio = $selectSound
+onready var selectSonidito = preload("res://musica/BRAINAGE-14.wav")
+
 
 var respuestaActual
 var seleccion = 1
@@ -48,7 +51,7 @@ onready var frame = $frame
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$START.play("start")
-
+	selectAudio.stream = selectSonidito
 	$AnimationIdle.play("idle")
 	$AnimationEstrofa.play("pregunta")
 	labels.append(labelTRES)
@@ -85,6 +88,7 @@ func _responder(opcion, insta = false):
 	
 func _stop_other_tweens():
 	if prevSelectedLabel != null && prevSelectedLabel != selectedLabel:
+		selectAudio.play()
 		create_tween().tween_property(prevSelectedLabel.get_parent(), "scale", Vector2(1, 1), 0.7).set_trans(Tween.TRANS_ELASTIC)
 	
 	for v in labels:

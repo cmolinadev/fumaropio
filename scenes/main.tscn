@@ -890,6 +890,9 @@ position = Vector2( 1024, 0 )
 texture = ExtResource( 38 )
 centered = false
 
+[node name="selectSound" type="AudioStreamPlayer" parent="."]
+volume_db = -22.034
+
 [node name="SonidoRespuesta6" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0
 
