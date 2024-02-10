@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/you_win_drone.mp3-6462371d32d9af94de0e34e6d0abbe8d.mp3str"
+
+[deps]
+
+source_file="res://musica/you_win_drone.mp3"
+dest_files=[ "res://.import/you_win_drone.mp3-6462371d32d9af94de0e34e6d0abbe8d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
