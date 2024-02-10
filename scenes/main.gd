@@ -153,8 +153,16 @@ func _empezar():
 		10:
 			_preguntaNueva("Pregunta trampa: ¿Es el opio bueno?", "miki", 2, pregunta11, Color.khaki)
 			_prepararRespuestas("si", "no", "depende de la ocasión")
+		11:
+			_endgame()
 			
 	_responder(2, true)
+	
+func _endgame():
+	if errores == 0:
+		get_tree().change_scene("res://scenes/goodEnding.tscn")
+	else: 
+		get_tree().change_scene("res://scenes/badEnding.tscn")
 	
 func _prepararRespuestas(uno,dos,tres):
 	labelUNO.text = uno
