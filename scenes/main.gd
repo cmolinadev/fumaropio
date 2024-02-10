@@ -40,6 +40,7 @@ var prevSelectedLabel
 onready var frame = $frame
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$START.play("start")
 
 	$AnimationIdle.play("idle")
 	$AnimationEstrofa.play("pregunta")
@@ -72,7 +73,7 @@ func _responder(opcion, insta = false):
 	
 	var tween = create_tween()
 	var time = 0 if insta else 0.7
-	tween.tween_property(selectedLabel.get_parent(), "scale", Vector2(1.4, 1.4),time).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(selectedLabel.get_parent(), "scale", Vector2(1.3, 1.8),time).set_trans(Tween.TRANS_ELASTIC)
 	_stop_other_tweens()
 	
 func _stop_other_tweens():
@@ -114,7 +115,7 @@ func _empezar():
 			_prepararRespuestas("Opio", "Opio", "Apio")
 		5:
 			_preguntaNueva("¿De qué color era la ropa del líder del ejercito francés en la segunda guerra del opio en 1856", "estebanco", 2, pregunta5, Color.lightblue)
-			_prepararRespuestas("#008f39", "Azul, roja y blanca", "Verde opio")
+			_prepararRespuestas("Ninguno, la vendió por opio", "Azul, roja y blanca", "Verde opio")
 		6:
 			_preguntaNueva("¿A cuánto está el gramo de opio?", "pocoyo", 1,  pregunta6, Color.fuchsia)
 			_prepararRespuestas("¡No quiero saberlo!", "34$", "Lo que sea necesario")
