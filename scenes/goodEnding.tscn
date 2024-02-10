@@ -129,7 +129,7 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 510, 296 )
 scale = Vector2( 1.01149, 1.01149 )
 frames = SubResource( 13 )
-frame = 3
+frame = 11
 playing = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
