@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://kekos/Te encanta el opio.png" type="Texture" id=1]
 [ext_resource path="res://musica/413503__hitsoundz__metal-hit-echo.mp3" type="AudioStream" id=2]
 [ext_resource path="res://musica/you_lose_drone.wav" type="AudioStream" id=3]
 [ext_resource path="res://scenes/Play.gd" type="Script" id=4]
+[ext_resource path="res://scenes/toCredits.gd" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 4
@@ -75,7 +76,7 @@ animations = [ {
 
 [sub_resource type="Animation" id=14]
 resource_name = "EndWin"
-length = 10.0
+length = 16.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("../AnimatedSprite:scale")
 tracks/0/interp = 1
@@ -100,6 +101,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 15.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_to_credits"
+} ]
+}
 
 [sub_resource type="Animation" id=15]
 length = 0.001
@@ -117,6 +132,7 @@ tracks/0/keys = {
 }
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -441.0
@@ -129,7 +145,7 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 512, 300 )
 scale = Vector2( 1.10191, 1.10191 )
 frames = SubResource( 28 )
-frame = 3
+frame = 9
 playing = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -137,7 +153,7 @@ margin_left = -441.0
 margin_top = -330.0
 margin_right = 2359.0
 margin_bottom = 2470.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
