@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/super_yay.mp3-5f99bb75883870b95f779f6f026d4720.mp3str"
+
+[deps]
+
+source_file="res://musica/super_yay.mp3"
+dest_files=[ "res://.import/super_yay.mp3-5f99bb75883870b95f779f6f026d4720.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
